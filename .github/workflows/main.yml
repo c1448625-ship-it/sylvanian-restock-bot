@@ -1,0 +1,86 @@
+ # 30분마다 자동 실행
+
+
+
+
+
+
+
+
+
+
+
+
+
+          - name: 파이썬 3.11 설정
+
+
+
+
+          - name: 재고 모니터링 실행
+
+
+
+
+
+
+
+
+              PRODUCT_NAME = "ゆめみる赤ちゃんいっぱい ギフトセット"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          msg = f"🎉 [실바니안 재입고 알림!]\n\n상품명: {PRODUCT_NAME}\n재고가 입고되었습니다! 지금 바로 접속하세요:\n{PRODUCT_URL}"
+                          print(now, "IN STOCK!")
+                          send_telegram(msg)
+                          sys.exit(0)
+                      else:
+                          print(f"[{now}] 품절 상태 대기 중...")
+                  except Exception as e:
+                      print(f"[{now}] 오류: {e}")
+
+                  if time.time() - start >= DURATION_MINUTES * 60:
+                      print("정상 완료.")
+                      break
+                  time.sleep(INTERVAL_SECONDS)
+              EOF
